@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — EduTrack</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" class="brand"><span class="brand-mark">E</span> EduTrack</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#courses">Courses</a></li>
+        <li class="auth-only-out" hidden><a href="login.html">Log in</a></li>
+        <li class="auth-only-out" hidden><a href="register.html" class="btn btn-primary">Register</a></li>
+        <li class="auth-only-in"><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li class="auth-only-in"><a href="#" id="logoutLink" class="btn btn-outline">Log out</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="dash-header">
+      <div class="container">
+        <div>
+          <p class="hero-eyebrow" style="margin-bottom:4px;">Dashboard</p>
+          <h1 id="welcomeHeading" style="margin-bottom:0;">Welcome back</h1>
+        </div>
+        <span class="badge" id="statusBadge">Signed in</span>
+      </div>
+    </section>
+
+    <div class="dash-grid">
+      <aside class="profile-card" id="profileCard">
+        <div class="avatar" id="avatarInitial">S</div>
+        <h3 id="profileName">Student Name</h3>
+        <dl class="profile-list">
+          <dt>Email</dt>
+          <dd id="profileEmail">student@example.com</dd>
+          <dt>Phone</dt>
+          <dd id="profilePhone">—</dd>
+          <dt>Student ID</dt>
+          <dd id="profileId">—</dd>
+          <dt>Member since</dt>
+          <dd id="profileSince">—</dd>
+        </dl>
+      </aside>
+
+      <section class="course-list">
+        <h2>Your courses</h2>
+        <div class="table-scroll">
+          <table class="course-table" id="courseTable">
+            <thead>
+              <tr>
+                <th>Course</th>
+                <th>Duration</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="courseTableBody">
+              <!-- Rows populated by js/main.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="index.html" class="brand" style="color:#F4F2EC;font-size:1.05rem;">EduTrack</a>
+      <span class="footer-fine">© 2026 EduTrack. Student project — FSWD Capstone.</span>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
