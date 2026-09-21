@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduTrack — Student Course Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">E</span> EduTrack
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.html#courses">Courses</a></li>
+        <li class="auth-only-out"><a href="login.html">Log in</a></li>
+        <li class="auth-only-out"><a href="register.html" class="btn btn-primary">Register</a></li>
+        <li class="auth-only-in" hidden><a href="dashboard.html">Dashboard</a></li>
+        <li class="auth-only-in" hidden><a href="#" id="logoutLink" class="btn btn-outline">Log out</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <p class="hero-eyebrow">The student registrar, simplified</p>
+          <h1>One record for every student, every course, every update.</h1>
+          <p class="lead">EduTrack replaces the spreadsheet-and-chat-group shuffle with a single portal where students register, enroll, and track their courses — and staff keep one accurate ledger.</p>
+          <div class="hero-actions">
+            <a href="register.html" class="btn btn-primary">Create an account</a>
+            <a href="login.html" class="btn btn-ghost">I already have one</a>
+          </div>
+        </div>
+        <div class="ledger-card">
+          <div class="ledger-card__head">Term Snapshot</div>
+          <dl style="margin:0;">
+            <div class="ledger-row"><dt>Active students</dt><dd>128</dd></div>
+            <div class="ledger-row"><dt>Open courses</dt><dd>9</dd></div>
+            <div class="ledger-row"><dt>Enrollments this week</dt><dd>34</dd></div>
+            <div class="ledger-row"><dt>Avg. response time</dt><dd>Instant</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="section-head">
+        <h2>Built for how students actually check in</h2>
+        <p>Three things a portal needs to get right — we start there.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature">
+          <span class="num">i.</span>
+          <h3>Register once</h3>
+          <p>A short form, real validation, and a confirmation — no lost sign-ups in a group chat.</p>
+        </article>
+        <article class="feature">
+          <span class="num">ii.</span>
+          <h3>See your standing</h3>
+          <p>The dashboard shows exactly which courses you're enrolled in and their status, at a glance.</p>
+        </article>
+        <article class="feature">
+          <span class="num">iii.</span>
+          <h3>Hear about changes as they happen</h3>
+          <p>Notifications and messages arrive in real time — no refreshing to find out what changed.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="courses">
+      <div class="section-head">
+        <h2>This term's courses</h2>
+        <p>A preview of the catalog — full enrollment happens from your dashboard.</p>
+      </div>
+      <div class="card-grid">
+        <article class="course-card">
+          <div class="course-card__body">
+            <span class="course-card__tag">Web Development</span>
+            <h3>Full Stack Fundamentals</h3>
+            <p>HTML, CSS, JavaScript, React, Node and MongoDB — one project, start to deploy.</p>
+            <div class="course-card__meta">12 weeks · Beginner–Intermediate</div>
+          </div>
+        </article>
+        <article class="course-card">
+          <div class="course-card__body">
+            <span class="course-card__tag">Data</span>
+            <h3>Applied Data Analysis</h3>
+            <p>Spreadsheets to SQL to dashboards — reading data critically before visualizing it.</p>
+            <div class="course-card__meta">8 weeks · Beginner</div>
+          </div>
+        </article>
+        <article class="course-card">
+          <div class="course-card__body">
+            <span class="course-card__tag">Careers</span>
+            <h3>Technical Interview Prep</h3>
+            <p>Structured practice on data structures, system design basics, and mock interviews.</p>
+            <div class="course-card__meta">6 weeks · All levels</div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="index.html" class="brand" style="color:#F4F2EC;font-size:1.05rem;">EduTrack</a>
+      <ul class="footer-links">
+        <li><a href="index.html#courses">Courses</a></li>
+        <li><a href="login.html">Log in</a></li>
+        <li><a href="register.html">Register</a></li>
+      </ul>
+      <span class="footer-fine">© 2026 EduTrack. Student project — FSWD Capstone.</span>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
