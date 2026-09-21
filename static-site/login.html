@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in — EduTrack</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" class="brand"><span class="brand-mark">E</span> EduTrack</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#courses">Courses</a></li>
+        <li class="auth-only-out"><a href="login.html" class="active">Log in</a></li>
+        <li class="auth-only-out"><a href="register.html" class="btn btn-primary">Register</a></li>
+        <li class="auth-only-in" hidden><a href="dashboard.html">Dashboard</a></li>
+        <li class="auth-only-in" hidden><a href="#" id="logoutLink" class="btn btn-outline">Log out</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="auth-wrap">
+    <div class="auth-card">
+      <h1>Welcome back</h1>
+      <p class="sub">Log in to see your enrolled courses and updates.</p>
+
+      <div class="form-banner" id="formBanner" role="alert"></div>
+
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="identifier">Email or username</label>
+          <input type="text" id="identifier" name="identifier" autocomplete="username" required>
+          <p class="field-error" id="identifierError"></p>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" autocomplete="current-password" required>
+          <p class="field-error" id="passwordError"></p>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Log in</button>
+      </form>
+
+      <p class="auth-foot">Don't have an account? <a href="register.html">Register here</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="index.html" class="brand" style="color:#F4F2EC;font-size:1.05rem;">EduTrack</a>
+      <span class="footer-fine">© 2026 EduTrack. Student project — FSWD Capstone.</span>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
