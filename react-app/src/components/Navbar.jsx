@@ -65,6 +65,11 @@ export default function Navbar() {
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/admin" onClick={() => setOpen(false)}>
+                  Admin
+                </NavLink>
+              </li>
+              <li>
                 <a href="#logout" className="btn btn-outline" onClick={handleLogout}>
                   Log out
                 </a>
