@@ -529,3 +529,27 @@ p { margin: 0 0 1em; color: var(--text); max-width: 62ch; }
 
   .site-footer .container { flex-direction: column; align-items: flex-start; }
 }
+.role-switch {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.role-switch button {
+  flex: 1;
+  padding: 10px 14px;
+  background: var(--paper-raised);
+  border: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.role-switch button + button { border-left: 1px solid var(--border); }
+.role-switch button:hover:not(.active) { background: var(--paper); color: var(--ink); }
+.role-switch button.active { background: var(--ink); color: #F4F2EC; }
