@@ -18,6 +18,11 @@ export default function Login() {
     setForm((f) => ({ ...f, [name]: value }));
   }
 
+  function handleRoleChange(nextRole) {
+    setRole(nextRole);
+    setBanner(null);
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     setBanner(null);
@@ -33,11 +38,11 @@ export default function Login() {
     }
 
     try {
-     await login({ ...form, role });
+      await login({ ...form, role });
       setBanner({ type: "success", message: "Welcome back! Redirecting…" });
       setTimeout(() => {
         navigate(role === "admin" ? "/admin" : "/dashboard");
-}, 500);
+      }, 500);
     } catch (err) {
       setBanner({ type: "error", message: err.message });
     }
@@ -49,25 +54,40 @@ export default function Login() {
         <h1>Welcome back</h1>
         <p className="sub">Log in to see your enrolled courses and updates.</p>
 
-        {banner && <div className={`form-banner show ${banner.type}`} role="alert">{banner.message}</div>}
-
-        <form onSubmit={handleSubmit} noValidate>
-          <div className="role-switch">
-            <button
-              type="button"
-              className={role === "student" ? "active" : ""}
-              onClick={() => setRole("student")}
-            >
-              Student
-            </button>
+        <div className="role-switch" role="tablist" aria-label="Account type">
           <button
             type="button"
+            role="tab"
+            aria-selected={role === "student"}
+            className={role === "student" ? "active" : ""}
+            onClick={() => handleRoleChange("student")}
+          >
+            Student
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={role === "admin"}
             className={role === "admin" ? "active" : ""}
-            onClick={() => setRole("admin")}
+            onClick={() => handleRoleChange("admin")}
           >
             Admin
           </button>
         </div>
+
+        {role === "admin" && (
+          <p className="field-hint" style={{ marginBottom: 18 }}>
+            Demo admin account: <strong>admin@edutrack.local</strong> / <strong>Admin123</strong>
+          </p>
+        )}
+
+        {banner && (
+          <div className={`form-banner show ${banner.type}`} role="alert">
+            {banner.message}
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} noValidate>
           <FormField
             id="identifier"
             label="Email or username"
@@ -85,7 +105,9 @@ export default function Login() {
             error={errors.password}
             autoComplete="current-password"
           />
-          <button type="submit" className="btn btn-primary btn-block">Log in</button>
+          <button type="submit" className="btn btn-primary btn-block">
+            Log in
+          </button>
         </form>
 
         <p className="auth-foot">
