@@ -8,6 +8,7 @@ export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  const [role, setRole] = useState("student");
   const [form, setForm] = useState({ identifier: "", password: "" });
   const [errors, setErrors] = useState({});
   const [banner, setBanner] = useState(null); // { type, message }
@@ -32,9 +33,11 @@ export default function Login() {
     }
 
     try {
-      await login(form);
+     await login({ ...form, role });
       setBanner({ type: "success", message: "Welcome back! Redirecting…" });
-      setTimeout(() => navigate("/dashboard"), 500);
+      setTimeout(() => {
+        navigate(role === "admin" ? "/admin" : "/dashboard");
+}, 500);
     } catch (err) {
       setBanner({ type: "error", message: err.message });
     }
@@ -49,6 +52,22 @@ export default function Login() {
         {banner && <div className={`form-banner show ${banner.type}`} role="alert">{banner.message}</div>}
 
         <form onSubmit={handleSubmit} noValidate>
+          <div className="role-switch">
+            <button
+              type="button"
+              className={role === "student" ? "active" : ""}
+              onClick={() => setRole("student")}
+            >
+              Student
+            </button>
+          <button
+            type="button"
+            className={role === "admin" ? "active" : ""}
+            onClick={() => setRole("admin")}
+          >
+            Admin
+          </button>
+        </div>
           <FormField
             id="identifier"
             label="Email or username"
