@@ -19,7 +19,18 @@ export default function Dashboard() {
     };
   }, []);
 
-  if (!user) return null; // ProtectedRoute redirects before this renders
+  if (!user) {
+  return (
+    <main className="auth-wrap">
+      <div className="auth-card">
+        <h1>Session error</h1>
+        <p className="sub">
+          Your login session could not be loaded. Please log out and log in again.
+        </p>
+      </div>
+    </main>
+  );
+}
 
   return (
     <main>
