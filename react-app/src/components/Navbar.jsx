@@ -3,7 +3,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 
 export default function Navbar() {
-  const { isLoggedIn, logout } = useAuth();
+  const { isLoggedIn, user, logout } = useAuth();
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -56,26 +56,24 @@ export default function Navbar() {
               </li>
             </>
           )}
-
           {isLoggedIn && (
-            <>
-              <li>
-                <NavLink to="/dashboard" onClick={() => setOpen(false)}>
-                  Dashboard
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/admin" onClick={() => setOpen(false)}>
-                  Admin
-                </NavLink>
-              </li>
-              <li>
-                <a href="#logout" className="btn btn-outline" onClick={handleLogout}>
-                  Log out
-                </a>
-              </li>
-            </>
-          )}
+  <>
+    <li>
+      <NavLink
+        to={user?.role === "admin" ? "/admin" : "/dashboard"}
+        onClick={() => setOpen(false)}
+      >
+        {user?.role === "admin" ? "Admin console" : "Dashboard"}
+      </NavLink>
+    </li>
+
+    <li>
+      <a href="#logout" className="btn btn-outline" onClick={handleLogout}>
+        Log out
+      </a>
+    </li>
+  </>
+)}
         </ul>
       </nav>
     </header>
