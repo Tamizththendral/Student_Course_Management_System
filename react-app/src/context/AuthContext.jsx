@@ -28,13 +28,13 @@ export function AuthProvider({ children }) {
   );
 
   const login = useCallback(
-    async ({ identifier, password }) => {
-      const { user, token } = await loginUser({ identifier, password });
-      persist({ user, token });
-      return user;
-    },
-    [persist]
-  );
+  async ({ identifier, password, role }) => {
+    const { user, token } = await loginUser({ identifier, password, role });
+    persist({ user, token });
+    return user;
+  },
+  [persist]
+);
 
   const logout = useCallback(() => persist(null), [persist]);
 
