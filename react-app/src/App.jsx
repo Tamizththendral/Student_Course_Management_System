@@ -10,17 +10,28 @@ import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Courses from "./pages/Courses.jsx";
-import AdminDashboard from "./pages/AdminDashboard";
+import AdminDashboard from "./pages/AdminDashboard.jsx";
 
 export default function App() {
   return (
     <AuthProvider>
       <Navbar />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
         <Route
           path="/admin"
           element={
@@ -29,8 +40,8 @@ export default function App() {
             </AdminRoute>
           }
         />
-        <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
+
       <Footer />
     </AuthProvider>
   );
