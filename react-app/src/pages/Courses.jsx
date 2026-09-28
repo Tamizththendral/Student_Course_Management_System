@@ -1,45 +1,40 @@
 import React from "react";
 import CourseCard from "../components/CourseCard.jsx";
-
-const courses = [
-  {
-    tag: "Web Development",
-    title: "Full Stack Fundamentals",
-    description: "HTML, CSS, JavaScript, React, Node and MongoDB — one project, start to deploy.",
-    meta: "12 weeks · Beginner–Intermediate",
-  },
-  {
-    tag: "Data",
-    title: "Applied Data Analysis",
-    description: "Spreadsheets to SQL to dashboards — reading data critically before visualizing it.",
-    meta: "8 weeks · Beginner",
-  },
-  {
-    tag: "Careers",
-    title: "Technical Interview Prep",
-    description: "Structured practice on data structures, system design basics, and mock interviews.",
-    meta: "6 weeks · All levels",
-  },
-  {
-    tag: "Design",
-    title: "UI Foundations for Developers",
-    description: "Typography, color, and layout systems that make a developer's UI look intentional.",
-    meta: "5 weeks · Beginner",
-  },
-];
+import { useCourses } from "../context/CourseContext.jsx";
 
 export default function Courses() {
+  const { courses, loading, error } = useCourses();
+
   return (
     <main className="section">
       <div className="section-head">
         <h1>Course catalog</h1>
-        <p>Everything open for enrollment this term. Enroll from your dashboard once you're logged in.</p>
+        <p>
+          Everything open for enrollment this term. Enroll from your dashboard
+          once you're logged in.
+        </p>
       </div>
-      <div className="card-grid">
-        {courses.map((c) => (
-          <CourseCard key={c.title} {...c} />
-        ))}
-      </div>
+
+      {loading && <p>Loading courses...</p>}
+
+      {error && <p>{error}</p>}
+
+      {!loading && !error && (
+        <div className="card-grid">
+          {courses.map((course) => (
+            <CourseCard
+              key={course.id}
+              image={course.image}
+              alt={course.courseName}
+              title={course.courseName}
+              description={course.overview}
+              courseKey={course.id}
+              tag={course.category}
+              meta={`${course.duration} · ${course.level}`}
+            />
+          ))}
+        </div>
+      )}
     </main>
   );
 }
